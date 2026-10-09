@@ -9,6 +9,6 @@ namespace LibraryManagement.Data
     {
         List<Book> GetBook();
         Book GetBookById(int id);
-       
+        CustomResponse Update_Book(Book book);
     }
 }

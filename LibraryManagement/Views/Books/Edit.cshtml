@@ -1,24 +1,42 @@
 ﻿@using LibraryManagement.Model;
 @model Book
 
-<table class="table">
-<thead>
-    <tr>
-        <th>Id</th>
-        <th>BookName</th>
-<th>AuthorName</th>
-<th>ISBN</th>
-<th>Price</th>
-<th>Quantity</th>
-</tr>
-<tbody>
-    <tr>
-        <td>@Model.Id</td>
-        <td>@Model.BookName</td>
-        <td>@Model.AuthorName</td>
-<td>@Model.ISBN</td>
-<td>@Model.Price</td>
-<td>@Model.Quantity</td>
-</tr>
-</tbody>
-</table>
+<form method="post">
+    <input type="hidden" asp-for="Id"/>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Author Name</th>
+                <th>ISBN</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <tbody>
+                <tr>
+                    
+                    <td><input type="text" asp-for="BookName" class="form-control" /> </td>
+                    <td>
+                        <select asp-items="ViewBag.Authors" asp-for="AuthorId" class="form-control">
+                            <option value="">Select Author</option>
+                        </select>
+                    </td>
+                    <td><input type="text" asp-for="ISBN" class="form-control" /></td>
+                    <td><input type="text" asp-for="Price" class="form-control" /></td>
+                    <td><input type="text" asp-for="Quantity" class="form-control" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Save Changes" class="btn btn-success" />
+    </form>
+    @if (ViewBag.Response != null)
+    {
+        if (ViewBag.Response.IsSuccess)
+        {
+            <div class="alert alert-success"> @ViewBag.Response.Message </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">@ViewBag.Response.Message</div>
+        }
+    }
