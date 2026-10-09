@@ -12,6 +12,7 @@
     <Folder Include="Views\Categories\" />
     <Folder Include="Views\Members\" />
     <Folder Include="Views\Reports\" />
+    <Folder Include="wwwroot\lib\datatable\" />
   </ItemGroup>
 
   <ItemGroup>

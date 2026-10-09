@@ -1,6 +1,8 @@
 ﻿@using LibraryManagement.Model
 @model List<Author>
-<table class="table">
+ 
+
+<table class="table" id="authorsTable">
     <thead>
         <tr>
             <th>Id</th>
@@ -21,3 +23,17 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#authorsTable').DataTable({
+                "paging": true,
+                "pageLength": 5,
+                "language": {
+                    "search": "Filter records:"
+                }
+            });
+        });
+    </script>
+}
