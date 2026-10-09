@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\BookIssue\" />
+    <Folder Include="Views\Categories\" />
+    <Folder Include="Views\Members\" />
+    <Folder Include="Views\Reports\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryManagement.Business\LibraryManagement.Business.csproj" />
+    <ProjectReference Include="..\LibraryManagement.Model\LibraryManagement.Model.csproj" />
+  </ItemGroup>
+
+</Project>

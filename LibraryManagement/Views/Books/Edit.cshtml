@@ -1,0 +1,24 @@
+﻿@using LibraryManagement.Model;
+@model Book
+
+<table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>BookName</th>
+<th>AuthorName</th>
+<th>ISBN</th>
+<th>Price</th>
+<th>Quantity</th>
+</tr>
+<tbody>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.BookName</td>
+        <td>@Model.AuthorName</td>
+<td>@Model.ISBN</td>
+<td>@Model.Price</td>
+<td>@Model.Quantity</td>
+</tr>
+</tbody>
+</table>

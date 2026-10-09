@@ -1,0 +1,32 @@
+﻿@model List<LibraryManagement.Model.Book>
+<table class="table">
+<thead>
+<tr>
+<th>Id</th>
+<th>BookName</th>
+<th>AuthorName</th>
+<th>ISBN</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Action</th>
+</tr>
+
+</thead>
+<tbody>
+        @foreach(var book in Model)
+        {
+            <tr>
+
+<td>@book.Id</td>
+<td>@book.BookName</td>
+<td>@book.AuthorName</td>
+<td>@book.ISBN</td>
+<td>@book.Price</td>
+<td>@book.Quantity</td>
+<td><a class="btn btn-danger" asp-controller="Books" asp-action="Edit" asp-route-id="@book.Id">Edit</a></td>
+
+</tr>
+        }
+    </tbody>
+
+</table>
