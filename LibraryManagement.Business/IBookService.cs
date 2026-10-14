@@ -9,5 +9,6 @@ namespace LibraryManagement.Business
     {
         List<Book> GetBook();
         Book GetBookById(int id);
+        CustomResponse UpdateBook(Book book);
     }
 }

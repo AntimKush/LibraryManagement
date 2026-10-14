@@ -22,5 +22,9 @@ namespace LibraryManagement.Business
         {
             return _book.GetBookById(id);
         }
+        public CustomResponse UpdateBook(Book book)
+        {
+            return _book.UpdateBook(book);
+        }
     }
 }

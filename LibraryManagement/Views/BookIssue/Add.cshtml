@@ -1,0 +1,42 @@
+﻿@model LibraryManagement.Model.BookIssue
+<form method="post">
+    <table class="table table-bordered table-stripped">
+    <thead class="table table-dark">
+        <tr>
+            <th>BookName</th>
+            <th>Member</th>
+            <th>IssueDate</th>
+            <th>DueDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                    <select asp-for="BookId" asp-items="@ViewBag.bookName">
+                        <option value="">---Select Book---</option>
+                </select>
+            </td>
+            <td>
+                    <select asp-for="MemberId" asp-items="@ViewBag.memberName">
+                        <option value="">---Select Member---</option>
+                </select>
+            </td>
+            <td><input type="text" class="form-control" asp-for="IssueDate"/></td>
+            <td><input type="text" class="form-control" asp-for="DueDate"/></td>
+        </tr>
+    </tbody>
+    </table>
+<button type="submit"  class="btn btn-success mb-3">Submit</button>
+</form>
+
+@if(ViewBag.response != null)
+{
+    @if (ViewBag.response.IsSuccess)
+    {
+        <div class="alert alert-success">@ViewBag.response.Message</div>
+    }
+    else
+    {
+        <div class="alert alert-danger">@ViewBag.response.Message</div>
+    }
+}

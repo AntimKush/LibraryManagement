@@ -1,0 +1,41 @@
+﻿@using LibraryManagement.Model
+@model List<Members>
+<table class="table table-bordered table-striped table-hover" id="membertable">
+    <thead class="table table-dark">
+        <tr>
+            <th>Id</th>
+            <th>MemberName</th>
+            <th>Mobile_No</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Join_Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var a in Model)
+        {
+            <tr>
+                <td>@a.Id</td>
+                <td>@a.MemberName</td>
+                <td>@a.Mobile_No</td>
+                <td>@a.Email</td>
+                <td>@a.Address</td>
+                <td>@a.Join_Date</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function(){
+            $('#membertable').DataTable({
+                "paging":true,
+                "pageLength":5,
+                "language":{
+                    "select":"Filter records"
+                }
+            });
+        });
+    </script>
+}

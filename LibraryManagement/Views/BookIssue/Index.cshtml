@@ -1,0 +1,47 @@
+﻿@using LibraryManagement.Model
+
+@model List<BookIssue>
+<table class="table table-bordered table-striped table-hover" id="bookissuetable">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>BookId</th>
+            <th>BookName</th>
+            <th>MemberId</th>
+            <th>MemberName</th>
+            <th>IssueDate</th>
+            <th>DueDate</th>
+            <th>ReturnDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var a in Model)
+        {
+            <tr>
+                <td>@a.Id</td>
+                <td>@a.BookId</td>
+                <td>@a.BookName</td>
+                <td>@a.MemberId</td>
+                <td>@a.MemberName</td>
+                <td>@a.IssueDate</td>
+                <td>@a.DueDate</td>
+                <td>@a.ReturnDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <a asp-controller="BookIssue" asp-action="Add" class="btn btn-success mb-3">Book_Issue</a>
+
+    @section scripts{
+        <script>
+            $(document).ready(function(){
+                $('#bookissuetable').DataTable({
+                    "paging":true,
+                    "pageLength": 5,
+                    "language":{
+                        "select":"Filter records"
+                    }
+                });
+            });
+        </script>
+    }

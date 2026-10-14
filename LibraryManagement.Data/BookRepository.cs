@@ -36,6 +36,9 @@ namespace LibraryManagement.Data
                 book.Id = Convert.ToInt32(reader["Id"]);
                 book.BookName = Convert.ToString(reader["BookName"]);
                 book.AuthorName = Convert.ToString(reader["AuthorName"]);
+                book.AuthorId = Convert.ToInt32(reader["AuthorId"]);
+                book.CategoryId = Convert.ToInt32(reader["Id"]);
+                book.CategoryName = Convert.ToString(reader["CategoryName"]);
                 book.ISBN = Convert.ToString(reader["ISBN"]);
                 book.Price = Convert.ToDecimal(reader["Price"]);
                 book.Quantity = Convert.ToInt32(reader["Quantity"]);
@@ -67,6 +70,9 @@ namespace LibraryManagement.Data
                 book.Id = Convert.ToInt32(reader["Id"]);
                 book.BookName = Convert.ToString(reader["BookName"]);
                 book.AuthorName = Convert.ToString(reader["AuthorName"]);
+                book.AuthorId = Convert.ToInt32(reader["AuthorId"]);
+                book.CategoryId = Convert.ToInt32(reader["CategoryId"]);
+                book.CategoryName = Convert.ToString(reader["CategoryName"]);
                 book.ISBN = Convert.ToString(reader["ISBN"]);
                 book.Price = Convert.ToDecimal(reader["Price"]);
                 book.Quantity = Convert.ToInt32(reader["Quantity"]);
@@ -74,5 +80,46 @@ namespace LibraryManagement.Data
             conn.Close();
             return book;
         }
+        public CustomResponse UpdateBook(Book book)
+        {
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = connectionString;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "dbo.UpdateBook";
+
+            cmd.Parameters.AddWithValue("@Id", book.Id);
+            cmd.Parameters.AddWithValue("@BookName", book.BookName);
+            cmd.Parameters.AddWithValue("@AuthorId", book.AuthorId);
+            cmd.Parameters.AddWithValue("@ISBN", book.ISBN);
+            cmd.Parameters.AddWithValue("@Price", book.Price);
+            cmd.Parameters.AddWithValue("@Quantity", book.Quantity);
+            CustomResponse customresponse = new CustomResponse();
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                var status = reader["Status"].ToString();
+                var message = reader["Message"].ToString();
+
+                customresponse.IsSuccess = status.ToUpper().Contains("SUCCESS");
+                customresponse.Message = message;
+
+                return customresponse;
+            }
+            conn.Close();
+            customresponse.IsSuccess = false;
+            customresponse.Message = "Error";
+
+            return customresponse;
+
+
+
+        }
+
+
     }
 }

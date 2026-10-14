@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\BookIssue\" />
-    <Folder Include="Views\Categories\" />
-    <Folder Include="Views\Members\" />
     <Folder Include="Views\Reports\" />
   </ItemGroup>
 
